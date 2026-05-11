@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { buildContactLeadCreatedPayload } from '@/lib/server/contact-payload';
-import { prisma } from '@/lib/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import { contactRequestSchema } from '@/lib/validation/contact';
 import { logSecurityEvent } from '@/lib/server/security';
 
@@ -137,6 +137,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const prisma = getPrismaClient();
     const lead = await prisma.contactLead.create({
       data: {
         name: input.name,
