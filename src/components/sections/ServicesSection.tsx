@@ -3,7 +3,6 @@ import { services } from '@/lib/constants';
 import { ServiceCard } from '../shared/ServiceCard';
 import { SectionTitle } from '../shared/SectionTitle';
 
-
 export function ServicesSection() {
   return (
     <section id="services" className="container mx-auto px-6">

@@ -21,7 +21,7 @@ export default function PricingPage() {
           center
           className="mb-16"
         />
-        <div className="grid gap-6 md:grid-cols-3 text-white">
+        <div className="grid gap-6 text-white md:grid-cols-3">
           {pricingPlans.map((plan, i) => (
             <PricingCard key={plan.id} plan={plan} index={i} />
           ))}
