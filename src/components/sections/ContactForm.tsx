@@ -64,15 +64,34 @@ export function ContactForm() {
       });
 
       if (!response.ok) {
-        throw new Error('Falha no envio da mensagem.');
+        let errorMessage = 'Não foi possível enviar. Tente novamente.';
+
+        if (response.status === 429) {
+          errorMessage =
+            'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
+        } else if (response.status === 422) {
+          errorMessage =
+            'Dados inválidos. Verifique os campos e tente novamente.';
+        } else if (response.status === 400) {
+          errorMessage = 'Requisição inválida. Tente novamente.';
+        } else if (response.status >= 500) {
+          errorMessage = 'Erro no servidor. Tente novamente em alguns minutos.';
+        }
+
+        throw new Error(errorMessage);
       }
 
       setSubmission({ sent: true, error: null });
       formElement.reset();
-    } catch {
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Não foi possível enviar agora. Tente novamente em instantes.';
+
       setSubmission({
         sent: false,
-        error: 'Não foi possível enviar agora. Tente novamente em instantes.',
+        error: errorMessage,
       });
     } finally {
       setLoading(false);
@@ -117,7 +136,7 @@ export function ContactForm() {
               <div key={id} className="flex flex-col gap-1.5">
                 <label
                   htmlFor={id}
-                  className="text-amber-600 font-mono text-[11px] tracking-[0.25em] uppercase"
+                  className="font-mono text-[11px] tracking-[0.25em] text-amber-600 uppercase"
                 >
                   {label}
                 </label>
@@ -134,7 +153,7 @@ export function ContactForm() {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="service"
-                className="text-amber-600 font-mono text-[11px] tracking-[0.25em] uppercase"
+                className="font-mono text-[11px] tracking-[0.25em] text-amber-600 uppercase"
               >
                 Serviço de interesse
               </label>
@@ -156,7 +175,7 @@ export function ContactForm() {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="message"
-                className="text-amber-600 font-mono text-[11px] tracking-[0.25em] uppercase"
+                className="font-mono text-[11px] tracking-[0.25em] text-amber-600 uppercase"
               >
                 Conte sobre seu projeto
               </label>

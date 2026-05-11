@@ -2,13 +2,41 @@ import { NextRequest, NextResponse } from 'next/server';
 import { buildContactLeadCreatedPayload } from '@/lib/server/contact-payload';
 import { prisma } from '@/lib/prisma';
 import { contactRequestSchema } from '@/lib/validation/contact';
+import { logSecurityEvent } from '@/lib/server/security';
 
 export const runtime = 'nodejs';
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
+const CLEANUP_INTERVAL_MS = 30 * 60 * 1000;
 
 const ipRequestStore = new Map<string, number[]>();
+let lastCleanup = Date.now();
+
+function cleanupRateLimitStore() {
+  const now = Date.now();
+
+  if (now - lastCleanup < CLEANUP_INTERVAL_MS) {
+    return;
+  }
+
+  const expiredIps: string[] = [];
+
+  ipRequestStore.forEach((timestamps, ip) => {
+    const validRequests = timestamps.filter(
+      (t) => now - t < RATE_LIMIT_WINDOW_MS,
+    );
+
+    if (validRequests.length === 0) {
+      expiredIps.push(ip);
+    } else {
+      ipRequestStore.set(ip, validRequests);
+    }
+  });
+
+  expiredIps.forEach((ip) => ipRequestStore.delete(ip));
+  lastCleanup = now;
+}
 
 function extractClientIp(request: NextRequest) {
   const xForwardedFor = request.headers.get('x-forwarded-for');
@@ -21,6 +49,8 @@ function extractClientIp(request: NextRequest) {
 }
 
 function isRateLimited(ip: string, now: number) {
+  cleanupRateLimitStore();
+
   const requests = ipRequestStore.get(ip) ?? [];
   const validRequests = requests.filter(
     (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
@@ -41,10 +71,17 @@ export async function POST(request: NextRequest) {
   const now = Date.now();
 
   if (isRateLimited(clientIp, now)) {
+    logSecurityEvent('RATE_LIMIT_EXCEEDED', {
+      clientIp,
+      endpoint: '/api/contact',
+    });
+
     return NextResponse.json(
       {
         success: false,
-        error: 'Muitas tentativas. Tente novamente em alguns minutos.',
+        error:
+          'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.',
+        code: 'RATE_LIMITED',
       },
       {
         status: 429,
@@ -59,9 +96,14 @@ export async function POST(request: NextRequest) {
 
   try {
     body = await request.json();
-  } catch {
+  } catch (error) {
+    logSecurityEvent('INVALID_JSON_PAYLOAD', {
+      clientIp,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+
     return NextResponse.json(
-      { success: false, error: 'Payload JSON inválido.' },
+      { success: false, error: 'Payload JSON inválido.', code: 'INVALID_JSON' },
       { status: 400 },
     );
   }
@@ -69,10 +111,17 @@ export async function POST(request: NextRequest) {
   const parsed = contactRequestSchema.safeParse(body);
 
   if (!parsed.success) {
+    logSecurityEvent('VALIDATION_FAILED', {
+      clientIp,
+      errorCount: parsed.error.issues.length,
+    });
+
     return NextResponse.json(
       {
         success: false,
-        error: 'Dados inválidos para envio de contato.',
+        error: 'Dados inválidos. Verifique e tente novamente.',
+        code: 'VALIDATION_ERROR',
+        issues: parsed.error.issues.length,
       },
       { status: 422 },
     );
@@ -81,7 +130,10 @@ export async function POST(request: NextRequest) {
   const input = parsed.data;
 
   if (input.website) {
-    return NextResponse.json({ success: true }, { status: 202 });
+    return NextResponse.json(
+      { success: true, code: 'ACCEPTED' },
+      { status: 202 },
+    );
   }
 
   try {
@@ -110,16 +162,23 @@ export async function POST(request: NextRequest) {
       {
         success: true,
         payload,
+        code: 'CREATED',
       },
       { status: 201 },
     );
   } catch (error) {
-    console.error('Erro ao persistir contato:', error);
+    logSecurityEvent('DATABASE_ERROR', {
+      clientIp,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      email: input.email,
+    });
 
     return NextResponse.json(
       {
         success: false,
-        error: 'Falha ao salvar contato no servidor.',
+        error:
+          'Falha ao processar sua solicitação. Tente novamente em instantes.',
+        code: 'SERVER_ERROR',
       },
       { status: 500 },
     );
