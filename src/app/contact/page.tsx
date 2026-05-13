@@ -21,8 +21,6 @@ export default function ContactPage() {
           />
           <div className="mt-10 space-y-5">
             {[
-              { label: 'WhatsApp', value: '+55 (67) 9 0000-0000' },
-              { label: 'E-mail', value: 'ola@studio.dev' },
               { label: 'Resposta', value: 'Até 24 horas úteis' },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col gap-0.5">
