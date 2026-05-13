@@ -1,13 +1,15 @@
 // components/sections/HeroSection.tsx
 'use client';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { BeamEffect } from '@/components/effects/BeamEffect';
-import { fadeUp, stagger, viewport } from '@/lib/motion';
+import { fadeUp, stagger } from '@/lib/motion';
 
 export function HeroSection() {
+  const router = useRouter();
+
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-16">
       {/* Beam effects decorativos */}
@@ -62,10 +64,19 @@ export function HeroSection() {
           variants={fadeUp}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <Button variant="primary" size="lg" icon={<ArrowRight size={16} />}>
+          <Button
+            variant="primary"
+            size="lg"
+            icon={<ArrowRight size={16} />}
+            onClick={() => router.push('/projects')}
+          >
             Ver meus projetos
           </Button>
-          <Button variant="secondary" size="lg">
+          <Button
+            variant="secondary"
+            size="lg"
+            onClick={() => router.push('/services')}
+          >
             Conhecer serviços
           </Button>
         </motion.div>
