@@ -3,8 +3,7 @@ import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata = {
   title: 'Projetos',
-  description:
-    'Confira os cases de sucesso e projetos desenvolvidos pelo Studio.',
+  description: 'Confira os cases de sucesso e projetos desenvolvidos por mim.',
 };
 
 export default function ProjectsPage() {

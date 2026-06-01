@@ -1,76 +1,28 @@
-// app/layout.tsx
 import type { Metadata } from 'next';
-import {
-  Playfair_Display,
-  DM_Sans,
-  Cormorant_Garamond,
-  DM_Mono,
-} from 'next/font/google';
-import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
-import { AuroraBackground } from '@/components/effects/AuroraBackground';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-playfair',
-});
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-dm-sans',
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-cormorant',
-});
-
-const dmMono = DM_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  display: 'swap',
-  variable: '--font-dm-mono',
-});
+import { MobileBottomNav } from '@/components/layout/navFooter';
+import '@/app/globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
-  title: {
-    template: '%s | Studio',
-    default: 'Studio — Presença Digital Premium',
-  },
-  description:
-    'Sites, landing pages, automações e agentes de IA para negócios que querem crescer.',
-  keywords: [
-    'next.js',
-    'automação',
-    'agente ia',
-    'landing page',
-    'site institucional',
-    'campo grande',
-  ],
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://isacdev.vercel.app/',
+  ),
+  title: 'Isac Freitas | Portfólio',
+  description: 'Portfólio premium com estilo terminal e interface SaaS.',
   icons: {
-    icon: '/brand/brand.jpg',
-    shortcut: '/brand/brand.jpg',
-    apple: '/brand/brand.jpg',
+    icon: '/brand/brand.svg',
   },
   openGraph: {
+    title: 'Isac Freitas | Portfólio',
+    description: 'Portfólio premium com estilo terminal e interface SaaS.',
     type: 'website',
-    locale: 'pt_BR',
-    siteName: 'Studio',
-    images: [
-      {
-        url: '/brand/brand.jpg',
-        width: 512,
-        height: 512,
-        alt: 'Studio — Presença Digital Premium',
-      },
-    ],
+    images: ['/brand/brand.svg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Isac Freitas | Portfólio',
+    description: 'Portfólio premium com estilo terminal e interface SaaS.',
+    images: ['/brand/brand.svg'],
   },
 };
 
@@ -80,14 +32,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className="scroll-smooth" data-scroll-behavior="smooth">
-      <body
-        className={`${playfair.variable} ${dmSans.variable} ${cormorant.variable} ${dmMono.variable} text-cream bg-[#0E0C0A] antialiased`}
-      >
-        <AuroraBackground />
+    <html lang="pt-BR">
+      <body className="bg-surface-400 text-primary min-h-screen antialiased">
         <Navbar />
         {children}
-        <Footer />
+        <MobileBottomNav />
       </body>
     </html>
   );

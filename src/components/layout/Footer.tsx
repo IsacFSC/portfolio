@@ -4,10 +4,8 @@ import { Zap } from 'lucide-react';
 import { BsGithub, BsInstagram, BsLinkedin } from 'react-icons/bs';
 
 const navLinks = [
-  { href: '/services', label: 'Serviços' },
   { href: '/projects', label: 'Projetos' },
   { href: '/about', label: 'Sobre' },
-  { href: '/pricing', label: 'Preços' },
   { href: '/contact', label: 'Contato' },
 ];
 
@@ -19,7 +17,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-[rgba(183,116,102,0.12)] bg-[rgba(14,12,10,0.8)] px-6 py-14">
+    <footer className="border-t border-[rgba(183,116,102,0.12)] bg-[rgba(14,12,10,0.8)] px-6 py-14 pb-20 md:pb-0">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-3">
           {/* Brand */}

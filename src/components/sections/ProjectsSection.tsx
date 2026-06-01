@@ -5,10 +5,11 @@ import { ProjectCard } from '@/components/shared/ProjectCard';
 
 export function ProjectsSection() {
   return (
-    <section className="container mx-auto px-6">
+    <section className="container mx-auto px-6" id="projects">
       <SectionTitle
         eyebrow="Portfólio"
         title="Projetos em destaque"
+        subtitle="Casos reais com soluções técnicas e decisões estratégicas que geram resultado imediato."
         className="mb-16"
       />
 

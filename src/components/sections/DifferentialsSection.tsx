@@ -8,33 +8,34 @@ const differentials = [
   {
     icon: Palette,
     title: 'Design Exclusivo',
-    desc: 'Nada de templates prontos. Cada projeto é desenhado do zero para transmitir a essência da sua marca.',
+    desc: 'Cada projeto é uma obra de arte única, criada sob medida para refletir a identidade e os valores do seu negócio.',
   },
   {
     icon: Code2,
-    title: 'Código de Alta Costura',
+    title: 'Clean code e Arquitetura',
     desc: 'Desenvolvimento limpo, modular e escalável seguindo as melhores práticas de engenharia de software.',
   },
   {
     icon: Rocket,
     title: 'Foco em Conversão',
-    desc: 'Landing pages e sites otimizados para transformar visitantes em clientes reais de forma orgânica.',
+    desc: 'Landing pages e sites otimizados para que cada visitante tenha uma experiência única e relevante.',
   },
   {
     icon: Shield,
     title: 'Segurança e Estabilidade',
-    desc: 'Hospedagem de ponta e sistemas robustos que garantem que seu negócio nunca fique offline.',
+    desc: 'Seus dados seguros e seu negócio protegido.',
   },
 ];
 
 export function DifferentialsSection() {
   return (
-    <section className="container mx-auto px-6">
+    <section className="container mx-auto px-1 lg:px-6">
       <div className="rounded-[40px] border border-[rgba(183,116,102,0.1)] bg-[rgba(183,116,102,0.03)] p-8 md:p-16">
         <SectionTitle
           eyebrow="Diferenciais"
           title="O padrão ouro do desenvolvimento"
           center
+          
         />
 
         <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2">

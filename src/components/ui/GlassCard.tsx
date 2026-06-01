@@ -2,16 +2,16 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-interface CardProps {
+interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export function Card({ children, className }: CardProps) {
+export function GlassCard({ children, className }: GlassCardProps) {
   return (
     <div
       className={cn(
-        'bg-card/80 rounded-xl border border-white/4 p-4',
+        'rounded-2xl border border-white/6 bg-white/4 p-6 shadow-lg backdrop-blur-md',
         className,
       )}
     >
@@ -20,4 +20,4 @@ export function Card({ children, className }: CardProps) {
   );
 }
 
-export default Card;
+export default GlassCard;

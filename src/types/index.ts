@@ -16,6 +16,8 @@ export interface Project {
   image: string;
   link: string;
   tags: string[];
+  problem: string;
+  decisions: string[];
 }
 
 export interface Testimonial {
@@ -24,14 +26,4 @@ export interface Testimonial {
   role: string;
   content: string;
   avatar: string;
-}
-
-export interface PricingPlan {
-  id: string;
-  name: string;
-  price: string;
-  description: string;
-  features: string[];
-  cta: string;
-  highlighted?: boolean;
 }

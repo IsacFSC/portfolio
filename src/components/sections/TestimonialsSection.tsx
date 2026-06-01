@@ -1,16 +1,16 @@
 'use client';
 import { motion } from 'framer-motion';
 import { SectionTitle } from '@/components/shared/SectionTitle';
-import { SpotlightCard } from '@/components/effects/SpotlightCard';
+import { TerminalCard } from '@/components/ui/TerminalCard';
 import { fadeUp, viewport } from '@/lib/motion';
 import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Carlos Ferreira',
-    role: 'CEO na TechSolutions',
+    name: 'Evellyn Lopes',
+    role: 'Nutricionista',
     content:
-      'A automação implementada pelo Studio reduziu nosso tempo de resposta em 70%. O ROI foi quase imediato.',
+      'O serviço foi excepcional, redirecionamento do whatsapp. Atrairam muitos clientes para minha clínica e o design é simplesmente incrível.',
   },
   {
     name: 'Juliana Santos',
@@ -19,10 +19,10 @@ const testimonials = [
       'O design da nossa landing page superou todas as expectativas. A estética retro-futurista nos deu uma autoridade absurda.',
   },
   {
-    name: 'Ricardo Mendes',
-    role: 'Fundador da Alpha Agency',
+    name: 'Renato Silva',
+    role: 'Personal Trainer',
     content:
-      'O agente de IA é impecável. Parece que temos uma equipe inteira cuidando do triagem de leads 24 horas por dia.',
+      'Incrível! Ter meu próprio site me deu uma presença online profissional e aumentou significativamente meus clientes.',
   },
 ];
 
@@ -46,18 +46,18 @@ export function TestimonialsSection() {
             viewport={viewport}
             transition={{ delay: i * 0.1 }}
           >
-            <SpotlightCard className="h-full p-8">
+            <TerminalCard className="h-full p-8">
               <Quote className="text-clay/20 mb-6" size={32} />
-              <p className="mb-8 text-lg leading-relaxed text-white italic">
+              <p className="text-primary mb-8 text-lg leading-relaxed italic">
                 {t.content}
               </p>
               <div>
-                <p className="text-cream font-bold">{t.name}</p>
-                <p className="font-mono text-xs font-bold tracking-widest text-white uppercase">
+                <p className="text-primary font-bold">{t.name}</p>
+                <p className="text-primary font-mono text-xs font-bold tracking-widest uppercase">
                   {t.role}
                 </p>
               </div>
-            </SpotlightCard>
+            </TerminalCard>
           </motion.div>
         ))}
       </div>

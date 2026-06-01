@@ -2,123 +2,187 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { BeamEffect } from '@/components/effects/BeamEffect';
+import { Terminal, Zap } from 'lucide-react';
+import { TerminalGridBackground } from '@/components/effects/TerminalGridBackground';
+import { ScanlineOverlay } from '@/components/effects/ScanlineOverlay';
 import { fadeUp, stagger } from '@/lib/motion';
+import { useEffect, useState } from 'react';
+
+const roles = [
+  'Full Stack Developer',
+  'SaaS Engineer',
+  'React Specialist',
+  'AI Enthusiast',
+];
+
+const technologies = [
+  'Next.js',
+  'React',
+  'TypeScript',
+  'NestJS',
+  'PostgreSQL',
+  'Prisma',
+  'Stripe',
+  'Jest',
+  'Better Auth',
+  'AWS',
+  'Docker',
+  'Tailwind',
+];
 
 export function HeroSection() {
   const router = useRouter();
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+
+  // Rotate roles
+  useEffect(() => {
+    const roleTimer = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+      setDisplayedText('');
+      setIsTyping(true);
+    }, 4000);
+
+    return () => clearInterval(roleTimer);
+  }, []);
+
+  // Typewriter effect
+  useEffect(() => {
+    if (!isTyping) return;
+
+    const currentRole = roles[roleIndex];
+    let charIndex = 0;
+
+    const typeInterval = setInterval(() => {
+      if (charIndex < currentRole.length) {
+        setDisplayedText(currentRole.slice(0, charIndex + 1));
+        charIndex++;
+      } else {
+        setIsTyping(false);
+        clearInterval(typeInterval);
+      }
+    }, 50); // 50ms per character = ~20 chars per second
+
+    return () => clearInterval(typeInterval);
+  }, [roleIndex, isTyping]);
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-16">
-      {/* Beam effects decorativos */}
-      <BeamEffect className="top-1/3 left-1/4 w-48" delay={0} />
-      <BeamEffect className="top-2/3 right-1/4 w-32" delay={2} />
-
-      {/* Linha decorativa vintage */}
-      <div className="via-clay/40 absolute top-24 left-1/2 h-px w-24 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent" />
+    <section className="relative flex min-h-svh items-center justify-center px-4 py-16 sm:px-6 sm:py-24">
+      <TerminalGridBackground />
+      <ScanlineOverlay intensity="low" />
 
       <motion.div
         initial="hidden"
         animate="visible"
         variants={stagger}
-        className="mx-auto max-w-5xl text-center"
+        className="mx-auto w-full max-w-4xl space-y-8"
       >
-        {/* Eyebrow */}
+        {/* System Info Bar */}
         <motion.div
           variants={fadeUp}
-          className="border-clay/20 bg-clay/5 mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5"
+          className="border-border-light bg-surface-300 flex items-center gap-2 rounded-xs border px-4 py-2"
         >
-          <Sparkles size={12} className="text-clay" />
-          <span className="font-mono text-xs font-bold tracking-[0.25em] text-white uppercase">
-            Automação · IA · Web Profissional
+          <Terminal size={14} className="text-cyan-DEFAULT" />
+          <span className="text-secondary font-mono text-xs">
+            isac@portfolio ~ $
           </span>
         </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          variants={fadeUp}
-          className="font-display text-cream text-5xl leading-[0.92] font-black md:text-7xl lg:text-8xl"
-        >
-          Sua presença
-          <br />
-          <em className="decoration-clay/30 text-white italic underline">
-            digital premium
-          </em>
-          <br />
-          começa aqui.
-        </motion.h1>
+        {/* Main Heading */}
+        <motion.div variants={fadeUp} className="space-y-2">
+          <div className="font-mono">
+            <p className="text-secondary text-xs">
+              <span className="text-accent-success">init</span>(
+              <span className="text-cyan-DEFAULT">&apos;portfolio&apos;</span>)
+            </p>
+          </div>
 
-        {/* Lead */}
-        <motion.p
-          variants={fadeUp}
-          className="font-accent mx-auto mt-8 max-w-xl text-xl leading-relaxed font-light text-white italic"
-        >
-          Sites, landing pages e automações com IA que transformam visitantes em
-          clientes — com identidade visual que se destaca.
-        </motion.p>
+          <h1 className="font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            <span className="text-cyan-DEFAULT">$</span> isac freitas
+          </h1>
 
-        {/* CTAs */}
+          {/* Typewriter Role */}
+          <div className="text-primary font-mono text-lg sm:text-xl lg:text-2xl">
+            <span className="text-accent-success">&gt;</span> {displayedText}
+            {isTyping && (
+              <span className="animate-blink text-cyan-DEFAULT">_</span>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Description */}
+        <motion.div variants={fadeUp} className="space-y-2">
+          <p className="text-secondary font-mono text-sm">
+            Aberto a oportunidades (Remoto ou Presencial)
+          </p>
+          <p className="text-tertiary font-mono text-xs">
+            Especializado em construir aplicações SaaS escaláveis e soluções
+            full-stack
+          </p>
+        </motion.div>
+
+        {/* Tech Stack - Terminal Style */}
+        <motion.div variants={fadeUp} className="space-y-2">
+          <p className="text-secondary font-mono text-xs">
+            <span className="text-accent-warning">[INFO]</span> stack: (
+            <span className="text-accent-success">
+              {technologies.slice(0, 5).join(', ')}
+            </span>
+            , ...)
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {technologies.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-xs border border-cyan-500/20 bg-cyan-500/5 px-2 py-1 font-mono text-xs text-cyan-300"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA Buttons - Command Style */}
         <motion.div
           variants={fadeUp}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-col gap-3 sm:flex-row sm:gap-4"
         >
-          <Button
-            variant="primary"
-            size="lg"
-            icon={<ArrowRight size={16} />}
+          <button
             onClick={() => router.push('/projects')}
+            className="group text-primary flex items-center justify-center gap-2 rounded-xs border border-cyan-500/30 bg-cyan-500/5 px-6 py-3 font-mono text-sm transition-all hover:border-cyan-500/60 hover:bg-cyan-500/10 hover:shadow-lg hover:shadow-cyan-500/20"
           >
-            Ver meus projetos
-          </Button>
-          <Button
-            variant="secondary"
-            size="lg"
-            onClick={() => router.push('/services')}
+            <span className="text-accent-success">/</span> projetos
+            <Zap
+              size={14}
+              className="transition-transform group-hover:scale-110"
+            />
+          </button>
+
+          <button
+            onClick={() => router.push('/about')}
+            className="border-border-light bg-surface-200 text-primary hover:bg-surface-100 rounded-xs border px-6 py-3 font-mono text-sm transition-all hover:border-cyan-500/30"
           >
-            Conhecer serviços
-          </Button>
+            <span className="text-accent-success">/</span> sobre
+          </button>
+
+          <button
+            onClick={() => router.push('/contact')}
+            className="border-border-light bg-surface-200 text-primary hover:bg-surface-100 rounded-xs border px-6 py-3 font-mono text-sm transition-all hover:border-cyan-500/30"
+          >
+            <span className="text-accent-success">/</span> contato
+          </button>
         </motion.div>
 
-        {/* Social proof rápida */}
+        {/* Status */}
         <motion.div
           variants={fadeUp}
-          className="mt-14 flex flex-wrap items-center justify-center gap-8 text-center"
+          className="border-border-light text-secondary border-t pt-6 font-mono text-xs"
         >
-          {[
-            { value: '40+', label: 'projetos entregues' },
-            { value: '98%', label: 'clientes satisfeitos' },
-            { value: '3×', label: 'mais conversões' },
-          ].map(({ value, label }) => (
-            <div key={label}>
-              <p className="font-display text-3xl font-bold text-white">
-                {value}
-              </p>
-              <p className="font-body mt-0.5 text-xs font-medium text-white">
-                {label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center gap-1.5 text-white/40"
-        >
-          <div className="to-sand/30 h-10 w-px bg-gradient-to-b from-transparent" />
-          <span className="font-mono text-[10px] tracking-[0.3em] uppercase">
-            scroll
-          </span>
+          <p>
+            <span className="text-accent-success animate-pulse">●</span> Online
+            • Última atualização: agora • Pronto para novos projetos
+          </p>
         </motion.div>
       </motion.div>
     </section>

@@ -2,15 +2,8 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://seustudio.dev';
-  const routes = [
-    '',
-    '/services',
-    '/projects',
-    '/about',
-    '/pricing',
-    '/contact',
-  ];
+  const baseUrl = 'https://isacdev.vercel.app/';
+  const routes = ['', '/projects', '/about', '/contact'];
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

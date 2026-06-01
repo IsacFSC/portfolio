@@ -1,92 +1,95 @@
-import { Bot, Globe, Layout, Workflow } from 'lucide-react';
-import { Service, Project, Testimonial, PricingPlan } from '@/types';
-
-export const services: Service[] = [
-  {
-    id: 'process-automation',
-    title: 'Automação de Processos',
-    description:
-      'Elimine tarefas repetitivas e otimize seu fluxo de trabalho com sistemas inteligentes.',
-    icon: Workflow,
-    tags: ['N8N', 'NodeJS', 'Python'],
-  },
-  {
-    id: 'landing-pages',
-    title: 'Landing Pages Premium',
-    description:
-      'Páginas de alta conversão com design sofisticado e performance extrema.',
-    icon: Layout,
-    tags: ['Next.js', 'Conversion', 'UX'],
-  },
-  {
-    id: 'ai-agents',
-    title: 'Agentes de IA',
-    description:
-      'Desenvolvimento de agentes autônomos personalizados para suporte ou vendas.',
-    icon: Bot,
-    tags: ['OpenAI', 'LangChain', 'RAG'],
-  },
-  {
-    id: 'institutional-sites',
-    title: 'Sites Institucionais',
-    description:
-      'Presença digital de autoridade para empresas que buscam se destacar no mercado.',
-    icon: Globe,
-    tags: ['Next.js', 'SEO', 'Performance'],
-  },
-];
+import { Project, Testimonial } from '@/types';
 
 export const projects: Project[] = [
   {
     id: 'escala-de-musicos',
     title: 'Escala Music',
-    description: 'Sua Escala em Perfeita Harmonia',
+    description:
+      'Plataforma para músicos colaborarem e gerarem escalas com agilidade.',
     category: 'Saas',
     image: '/projects/escala-music.png',
     link: 'https://escala-music.vercel.app/',
     tags: ['Next.js', 'PostgreSQL', 'Asaas API', 'Vercel', 'Uploadthing'],
+    problem:
+      'Criar uma interface fluida para músicos acessarem escalas, gerenciar conteúdo e compartilhar com equipes sem perder performance.',
+    decisions: [
+      'Arquitetura server-side com Next.js para carregamento instantâneo e SEO técnico.',
+      'Banco SQL para organizar escalas, usuários e arquivos de áudio com consistência.',
+      'Integração de Uploadthing para upload seguro de material multimídia.',
+    ],
   },
   {
     id: 'nutri-nine',
     title: 'Nutricionista Evellyn L.',
-    description: 'Nutrição Personalizada para uma Vida Saudável',
-    category: 'institucional',
+    description:
+      'Presença digital profissional e otimizada para captação de pacientes.',
+    category: 'Institucional',
     image: '/projects/nutri.png',
     link: 'https://my-nutri-nine.vercel.app/',
     tags: ['Next.js', 'Vercel', 'SEO'],
+    problem:
+      'Transformar um site institucional em uma vitrine de autoridade, aumentando a confiança e geração de leads para serviços de nutrição.',
+    decisions: [
+      'Design minimalista com foco em leitura e conversão para públicos mobile e desktop.',
+      'Otimização SEO on-page e performance para rápido carregamento em dispositivos lentos.',
+      'Copy clara e direcionada para serviços de avaliação nutricional e consultoria.',
+    ],
   },
   {
     id: 'delivery',
     title: 'Delivery Simple',
-    description: 'Saas de entrega rápida e eficiente simplificado',
+    description:
+      'Solução de entrega moderna para restaurantes e clientes locais.',
     category: 'Saas',
     image: '/projects/delivery.png',
     link: 'https://delivery-simple-two.vercel.app/',
     tags: ['Next.js', 'PostgreSQL', 'Asaas API', 'Vercel', 'Uploadthing'],
+    problem:
+      'Reduzir a fricção do pedido online em entregas locais, mantendo o processo simples e confiável.',
+    decisions: [
+      'Fluxo de checkout enxuto para reduzir abandono e acelerar conversões.',
+      'Uso de APIs financeiras para pagamentos e confirmações de pedidos em tempo real.',
+      'Estrutura de dados escalável para suportar menus, entregas e rastreamento.',
+    ],
   },
   {
     id: 'ong',
-    title: 'Amendoeira do cerrado',
+    title: 'Amendoeira do Cerrado',
     description:
-      'Desenvolvemos iniciativas para apoiar famílias, aprendizado e desenvolvimento humano.',
-    category: 'institucional',
+      'Site institucional para conectar projetos sociais a apoiadores e doadores.',
+    category: 'Institucional',
     image: '/projects/ong-amendoeira.png',
     link: 'https://amendoeira-do-cerrado.vercel.app/',
     tags: ['Next.js', 'PostgreSQL', 'Vercel', 'Uploadthing'],
+    problem:
+      'Dar voz ao projeto social com uma experiência clara que facilite doações e parcerias.',
+    decisions: [
+      'Narrativa visual forte para comunicar impacto e credibilidade.',
+      'Layout responsivo otimizado para captação de doadores via desktop e mobile.',
+      'Estrutura simples que destaca missão, ações e resultados com rapidez.',
+    ],
   },
 ];
 
 export const techStack = [
   'Next.js',
+  'React',
   'TypeScript',
-  'TailwindCSS',
-  'Framer Motion',
-  'OpenAI',
-  'N8N',
-  'Make.com',
-  'Python',
+  'NestJS',
   'PostgreSQL',
-  'Supabase',
+  'Prisma',
+  'Stripe',
+  'Jest',
+  'Better Auth',
+  'AbacatePay',
+  'Resend',
+  'AWS',
+  'Docker',
+  'Google Social',
+  'JWT',
+  'S3 UploadThing',
+  'Tailwind',
+  'React Native',
   'Vercel',
 ];
 
@@ -117,51 +120,4 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export const pricingPlans: PricingPlan[] = [
-  {
-    id: 'landing-page',
-    name: 'Landing Page',
-    price: 'A partir de R$ 2.500',
-    description:
-      'Ideal para lançamentos e produtos únicos que precisam de alta conversão.',
-    features: [
-      'Design Exclusivo',
-      'Otimização de Performance',
-      'SEO Local',
-      'Integração com WhatsApp',
-      'Focado em vendas',
-    ],
-    cta: 'Solicitar Orçamento',
-  },
-  {
-    id: 'automation',
-    name: 'Automação + IA',
-    price: 'A partir de R$ 4.000',
-    description:
-      'Transforme seu operacional com agentes de IA e workflows inteligentes.',
-    features: [
-      'Agente de IA Personalizado',
-      'Workflows com n8n',
-      'Integração com APIs',
-      'Painel de Controle Customizado',
-      'Suporte Prioritário',
-    ],
-    cta: 'Escalar meu Negócio',
-    highlighted: true,
-  },
-  {
-    id: 'full-experience',
-    name: 'Full Experience',
-    price: 'Sob Consulta',
-    description:
-      'Estratégia completa de ponta a ponta: Web + Automação + Design System.',
-    features: [
-      'Site Institucional Multi-páginas',
-      'Ecossistema Completo de IA',
-      'Consultoria Estratégica',
-      'Manutenção e Evolução',
-      'Treinamento de Equipe',
-    ],
-    cta: 'Falar com Especialista',
-  },
-];
+// services and pricingPlans removed per project simplification

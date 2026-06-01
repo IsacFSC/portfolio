@@ -29,8 +29,7 @@ export function CTASection() {
             para a era da inteligência?
           </h2>
           <p className="mx-auto mb-12 max-w-2xl text-xl font-light text-white">
-            Vamos criar algo memorável juntos. Entre em contato hoje e descubra
-            como a automação premium pode escalar seus resultados.
+            Traduzindo tecnologia em posicionamento online de alto impacto por onde eu passo.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">

@@ -20,16 +20,18 @@ export default function ContactPage() {
             subtitle="Conte sobre o seu projeto e eu retorno em até 24 horas com uma proposta."
           />
           <div className="mt-10 space-y-5">
-            {[
-              { label: 'Resposta', value: 'Até 24 horas úteis' },
-            ].map(({ label, value }) => (
-              <div key={label} className="flex flex-col gap-0.5">
-                <span className="text-clay/60 font-mono text-xs tracking-[0.25em] uppercase">
-                  {label}
-                </span>
-                <span className="font-body text-sand/70 text-sm">{value}</span>
-              </div>
-            ))}
+            {[{ label: 'Resposta', value: 'Até 24 horas úteis' }].map(
+              ({ label, value }) => (
+                <div key={label} className="flex flex-col gap-0.5">
+                  <span className="text-clay/60 font-mono text-xs tracking-[0.25em] uppercase">
+                    {label}
+                  </span>
+                  <span className="font-body text-sand/70 text-sm">
+                    {value}
+                  </span>
+                </div>
+              ),
+            )}
           </div>
         </div>
 
