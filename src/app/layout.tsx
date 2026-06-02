@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="bg-surface-400 text-primary min-h-screen antialiased">
+      <body className="bg-surface-400 overflow-x-hidden text-primary min-h-screen antialiased">
         <Navbar />
         {children}
         <MobileBottomNav />

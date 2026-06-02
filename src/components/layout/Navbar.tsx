@@ -58,9 +58,9 @@ export function Navbar() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="border-border-light bg-surface-300/80 fixed top-0 left-0 z-100 w-full border-b backdrop-blur-md transition-all duration-300"
+        className="border-border-light bg-surface-300/80 fixed top-0 left-0 z-100 border-b w-full backdrop-blur-md transition-all duration-300"
       >
-        <nav className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4 md:px-6">
+        <nav className="mx-auto flex h-12 w-full items-center justify-between px-4 md:px-6">
           {/* Left: Breadcrumb */}
           <div className="hidden items-center gap-2 md:flex">
             {/* Center: Search (decorative for now) */}
