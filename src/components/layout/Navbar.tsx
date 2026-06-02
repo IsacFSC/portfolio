@@ -107,14 +107,14 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-secondary hover:text-cyan-DEFAULT font-mono text-xs transition-colors"
+                className="text-secondary hover:text-cyan-500 font-mono text-[13.5px] transition-colors"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="text-primary rounded-xs border border-cyan-500/30 px-3 py-1.5 font-mono text-xs transition-all hover:border-cyan-500 hover:shadow-sm hover:shadow-cyan-500/20"
+              className="text-primary rounded-xs border border-cyan-500/30 px-3 py-1.5 hover:text-cyan-500 font-mono text-[13.5px] transition-all hover:border-cyan-500 hover:shadow-sm hover:shadow-cyan-500/20"
             >
               /contato
             </Link>
@@ -137,7 +137,7 @@ export function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="border-border-light bg-surface-300 border-t px-4 py-3 md:hidden"
+              className="border-border-light bg-surface-300 border-t px-4 py-5 md:hidden"
             >
               <div className="flex flex-col gap-3">
                 {links.map((link) => (
@@ -145,7 +145,7 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-secondary hover:text-cyan-DEFAULT font-mono text-xs transition-colors"
+                    className="text-secondary hover:text-cyan-DEFAULT font-mono text-sm transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -153,7 +153,7 @@ export function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="text-primary rounded-xs border border-cyan-500/30 px-3 py-2 text-center font-mono text-xs transition-all hover:border-cyan-500 hover:shadow-sm hover:shadow-cyan-500/20"
+                  className="text-primary rounded-xs border-2 border-cyan-700 bg-linear-to-r from-zinc-400/10 via-zinc-900 to-zinc-800 px-3 py-2 text-center font-mono text-sm transition-all hover:border-cyan-500 hover:shadow-sm hover:shadow-cyan-500/20"
                 >
                   /contato
                 </Link>

@@ -10,25 +10,31 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className="min-h-screen px-6 pt-32 pb-20">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto w-full px-4">
         <SectionTitle
           eyebrow="Nossa História"
-          title="Onde a nostalgia encontra a inteligência artificial"
+          title="Desenvolvedor Full Stack | Prisma, TypeScript, React, Next.js e NestJS"
           className="mb-12"
         />
 
-        <div className="space-y-8 text-lg leading-relaxed font-light text-white/90">
-          <p>
-            O Studio nasceu da percepção de que a web moderna tornou-se
-            visualmente monótona. Nossa missão é resgatar a personalidade
-            vibrante das décadas passadas, injetando a eficiência brutal da
-            automação contemporânea.
+        <div className="space-y-8 text-[14px] lg:text-lg leading-relaxed font-light text-white/90">
+          <p className='bg-gray-100 p-1 text-black text-sm text-center'>
+            Olá, Sou Desenvolvedor Full Stack com foco no ecossistema JavaScript e TypeScript, desenvolvendo 
+            aplicações web utilizando React, Next.js, NestJS e PostgreSQL.
           </p>
           <p>
-            Não construímos apenas sites; criamos ecossistemas digitais que
-            pensam, agem e convertem, permitindo que empreendedores foquem no
-            que realmente importa enquanto a tecnologia trabalha silenciosamente
-            no background.
+            Minha experiência profissional em suporte técnico me proporcionou uma visão prática sobre software, análise 
+            de problemas, investigação de bugs, documentação técnica e colaboração com equipes de Produto e Engenharia. 
+            Essa vivência fortaleceu minha capacidade de compreender regras de negócio, identificar oportunidades de 
+            melhoria e contribuir para a construção de soluções mais eficientes e centradas no usuário.
+          </p>
+          <p>
+            Atualmente, dedico meu tempo ao desenvolvimento contínuo de projetos Full Stack, aprimorando conhecimentos 
+            em arquitetura de software, APIs REST, Clean Code e boas práticas de desenvolvimento.
+          </p>
+          <p>
+            Busco minha primeira oportunidade como desenvolvedor, onde possa aplicar meus conhecimentos, continuar 
+            evoluindo tecnicamente e contribuir para a criação de produtos que gerem impacto real para usuários e negócios.
           </p>
         </div>
 

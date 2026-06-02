@@ -104,7 +104,7 @@ export function HeroSection() {
           </h1>
 
           {/* Typewriter Role */}
-          <div className="text-primary md:w-sm w-[250px] mx-auto font-mono text-lg lg:text-2xl">
+          <div className="text-primary md:w-sm w-62.5 mx-auto font-mono text-lg lg:text-2xl">
             <span className="text-accent-success">&gt;</span> {displayedText}
             {isTyping && (
               <span className="animate-blink text-cyan-DEFAULT">_</span>
@@ -117,7 +117,7 @@ export function HeroSection() {
           <p className="text-orange-400 font-mono text-xs md:text-[16px] text-center">
             Aberto a oportunidades (Remoto ou Presencial)
           </p>
-          <p className="hidden lg:flex text-secondary font-mono text-xs md:text-[16px] text-center">
+          <p className="hidden lg:flex text-secondary font-mono text-xs md:text-[16px] justify-center">
             Especializado em construir aplicações SaaS escaláveis e soluções
             full-stack
           </p>

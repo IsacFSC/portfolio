@@ -25,14 +25,14 @@ export function SectionTitle({
       whileInView="visible"
       viewport={viewport}
       variants={fadeUp}
-      className={cn('max-w-2xl', center && 'mx-auto text-center', className)}
+      className={cn('max-w-full', center && 'mx-auto text-center', className)}
     >
       {eyebrow && (
         <p className="mb-4 font-mono text-xs font-bold tracking-[0.3em] text-white uppercase">
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display text-cream text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+      <h2 className="font-display text-cream text-2xl leading-tight font-bold md:text-5xl lg:text-6xl">
         {title}
       </h2>
       {subtitle && (

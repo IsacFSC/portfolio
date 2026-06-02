@@ -5,7 +5,7 @@ import { ProjectCard } from '@/components/shared/ProjectCard';
 
 export function ProjectsSection() {
   return (
-    <section className="container mx-auto px-6" id="projects">
+    <section className="mx-auto justify-content px-6" id="projects">
       <SectionTitle
         eyebrow="Portfólio"
         title="Projetos em destaque"
