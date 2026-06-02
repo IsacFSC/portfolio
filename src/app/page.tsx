@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <div className="relative space-y-32 pb-32">
+      <div className="relative space-y-10 lg:space-y-32 lg:pb-32">
         <ProjectsSection />
         <TechStackSection />
         <DifferentialsSection />

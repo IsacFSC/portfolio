@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { MobileBottomNav } from '@/components/layout/navFooter';
 import '@/app/globals.css';
+import LoadingScreen from '@/components/loading-screen';
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -33,7 +34,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="bg-surface-400 overflow-x-hidden text-primary min-h-screen antialiased">
+      <body className="bg-surface-400 text-primary min-h-screen overflow-x-hidden antialiased">
+        <LoadingScreen />
         <Navbar />
         {children}
         <MobileBottomNav />

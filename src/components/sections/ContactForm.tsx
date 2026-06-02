@@ -100,12 +100,16 @@ export function ContactForm() {
 
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-      <TerminalCard title="Contato" className="p-6 md:p-8">
+      <TerminalCard title="Contato" className="p-6 pb-16 md:p-8">
         {submission.sent ? (
           <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
             <CheckCircle size={40} className="text-cyan-400" />
-            <p className="font-display text-primary text-2xl">Mensagem enviada!</p>
-            <p className="font-body text-primary/70 text-sm">Retorno em até 24 horas úteis.</p>
+            <p className="font-display text-primary text-2xl">
+              Mensagem enviada!
+            </p>
+            <p className="font-body text-primary/70 text-sm">
+              Retorno em até 24 horas úteis.
+            </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} noValidate className="space-y-5">
@@ -132,7 +136,7 @@ export function ContactForm() {
               <div key={id} className="flex flex-col gap-1.5">
                 <label
                   htmlFor={id}
-                  className="font-mono text-[11px] tracking-[0.25em] text-secondary uppercase"
+                  className="text-secondary font-mono text-[11px] tracking-[0.25em] uppercase"
                 >
                   {label}
                 </label>
@@ -141,7 +145,7 @@ export function ContactForm() {
                   name={id}
                   type={type}
                   placeholder={placeholder}
-                  className="font-body text-primary placeholder:text-tertiary h-11 w-full rounded-xs border border-border-light bg-surface-200 px-4 text-sm transition-colors focus:ring-1 focus:outline-none"
+                  className="font-body text-primary placeholder:text-tertiary border-border-light bg-surface-200 h-11 w-full rounded-xs border px-4 text-sm transition-colors focus:ring-1 focus:outline-none"
                 />
               </div>
             ))}
@@ -149,14 +153,14 @@ export function ContactForm() {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="service"
-                className="font-mono text-[11px] tracking-[0.25em] text-secondary uppercase"
+                className="text-secondary font-mono text-[11px] tracking-[0.25em] uppercase"
               >
                 Serviço de interesse
               </label>
               <select
                 id="service"
                 name="service"
-                className="font-body text-primary h-11 w-full rounded-xs border border-border-light bg-surface-200 px-4 text-sm transition-colors focus:ring-1 focus:outline-none"
+                className="font-body text-primary border-border-light bg-surface-200 h-11 w-full rounded-xs border px-4 text-sm transition-colors focus:ring-1 focus:outline-none"
                 defaultValue="other"
               >
                 <option value="other">Selecione um serviço</option>
@@ -169,7 +173,7 @@ export function ContactForm() {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="message"
-                className="font-mono text-[11px] tracking-[0.25em] text-secondary uppercase"
+                className="text-secondary font-mono text-[11px] tracking-[0.25em] uppercase"
               >
                 Conte sobre seu projeto
               </label>
@@ -178,7 +182,7 @@ export function ContactForm() {
                 name="message"
                 rows={4}
                 placeholder="Descreva o que você precisa, design, funcionalidades..."
-                className="font-body text-primary placeholder:text-tertiary w-full resize-none rounded-xs border border-border-light bg-surface-200 p-4 text-sm transition-colors focus:ring-1 focus:outline-none"
+                className="font-body text-primary placeholder:text-tertiary border-border-light bg-surface-200 w-full resize-none rounded-xs border p-4 text-sm transition-colors focus:ring-1 focus:outline-none"
               />
             </div>
 

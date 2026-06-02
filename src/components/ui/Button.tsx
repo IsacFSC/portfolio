@@ -19,15 +19,15 @@ export function Button({
 }: ButtonProps) {
   return (
     <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      // whileHover={{ scale: 1.02 }}
+      // whileTap={{ scale: 0.98 }}
       className={cn(
         'group relative inline-flex items-center justify-center gap-2 overflow-hidden font-mono tracking-widest uppercase transition-all',
-        size === 'md' ? 'px-6 py-3 text-xs' : 'px-10 py-4 text-[13px]',
+        size === 'md' ? 'px-6 py-3 text-xs' : 'px-auto py-2 text-[11px]',
         variant === 'primary'
-          ? 'bg-clay text-cream hover:bg-clay/90 shadow-[0_0_20px_rgba(183,116,102,0.3)]'
-          : 'border-clay/30 text-clay hover:bg-clay/5 border bg-transparent',
-        'rounded-full',
+          ? 'border border-sky-500 bg-transparent text-white shadow-[0_0_20px_rgba(183,116,102,0.3)] hover:border-sky-700 hover:text-cyan-500'
+          : 'border border-sky-500 bg-transparent text-white hover:border-sky-700 hover:text-cyan-500',
+        'rounded-md',
         className,
       )}
       {...props}

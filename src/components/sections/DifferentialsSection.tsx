@@ -35,7 +35,6 @@ export function DifferentialsSection() {
           eyebrow="Diferenciais"
           title="O padrão ouro do desenvolvimento"
           center
-          
         />
 
         <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2">

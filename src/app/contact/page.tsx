@@ -10,16 +10,17 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen px-6 pt-24 pb-20">
-      <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-2">
+    <main className="min-h-screen px-6 pt-24 pb-0">
+      <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-2">
         {/* Lado esquerdo — info */}
-        <div className="pt-4">
+        <div className="lg:block lg:pt-32 lg:pr-18">
           <SectionTitle
             eyebrow="Contato"
             title="Vamos construir algo incrível juntos."
             subtitle="Conte sobre o seu projeto e eu retorno em até 24 horas com uma proposta."
+            className="text-center"
           />
-          <div className="mt-10 space-y-5">
+          <div className="mt-10 space-y-5 text-center">
             {[{ label: 'Resposta', value: 'Até 24 horas úteis' }].map(
               ({ label, value }) => (
                 <div key={label} className="flex flex-col gap-0.5">

@@ -24,12 +24,13 @@ export function CTASection() {
         />
 
         <div className="relative z-10">
-          <h2 className="font-display text-cream mb-8 text-4xl leading-tight font-black md:text-6xl">
-            Pronto para levar seu negócio <br className="hidden md:block" />{' '}
-            para a era da inteligência?
+          <h2 className="font-display text-cream mb-8 text-xl leading-tight font-black md:text-6xl">
+            Eleve seus objetivos com <br className="hidden md:block" />{' '}
+            <span className="text-orange-400">Posicionamento online</span>
           </h2>
-          <p className="mx-auto mb-12 max-w-2xl text-xl font-light text-white">
-            Traduzindo tecnologia em posicionamento online de alto impacto por onde eu passo.
+          <p className="mx-auto mb-12 max-w-2xl text-xl font-light text-sky-400">
+            Técnologia + Experiência ={' '}
+            <span className="border-b text-white">Resultados Reais</span>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">

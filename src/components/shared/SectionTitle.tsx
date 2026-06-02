@@ -32,11 +32,11 @@ export function SectionTitle({
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display text-cream text-2xl leading-tight font-bold md:text-5xl lg:text-6xl">
+      <h2 className="font-display text-cream text-2xl leading-tight font-bold md:text-4xl lg:text-5xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="font-accent mt-4 text-lg leading-relaxed font-light text-white italic md:text-xl">
+        <p className="font-accent mt-4 text-xs leading-relaxed font-light text-white italic md:text-xl">
           {subtitle}
         </p>
       )}

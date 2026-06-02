@@ -58,7 +58,7 @@ export function Navbar() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="border-border-light bg-surface-300/80 fixed top-0 left-0 z-100 border-b w-full backdrop-blur-md transition-all duration-300"
+        className="border-border-light bg-surface-300/80 fixed top-0 left-0 z-100 w-full border-b backdrop-blur-md transition-all duration-300"
       >
         <nav className="mx-auto flex h-12 w-full items-center justify-between px-4 md:px-6">
           {/* Left: Breadcrumb */}
@@ -107,14 +107,14 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-secondary hover:text-cyan-500 font-mono text-[13.5px] transition-colors"
+                className="text-secondary font-mono text-[13.5px] transition-colors hover:text-cyan-500"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="text-primary rounded-xs border border-cyan-500/30 px-3 py-1.5 hover:text-cyan-500 font-mono text-[13.5px] transition-all hover:border-cyan-500 hover:shadow-sm hover:shadow-cyan-500/20"
+              className="text-primary rounded-xs border border-cyan-500/30 px-3 py-1.5 font-mono text-[13.5px] transition-all hover:border-cyan-500 hover:text-cyan-500 hover:shadow-sm hover:shadow-cyan-500/20"
             >
               /contato
             </Link>
