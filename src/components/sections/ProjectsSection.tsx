@@ -10,7 +10,7 @@ export function ProjectsSection() {
         eyebrow="Portfólio"
         title="Projetos em destaque"
         subtitle="Casos reais com soluções técnicas e decisões estratégicas que geram resultado imediato."
-        className="mb-16"
+        className="lg:mb-16 mb-6"
       />
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">

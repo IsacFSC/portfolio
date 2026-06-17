@@ -2,6 +2,41 @@ import { Project, Testimonial } from '@/types';
 
 export const projects: Project[] = [
   {
+    id: 'premium-personal',
+    title: 'Studio Premium Personal',
+    description:
+      'Landing page premium para um studio de treino personalizado, focado em performance, estética e conversão de clientes via WhatsApp.',
+    category: 'Landing Page',
+    image: '/projects/personal.png',
+    link: 'https://personal-premium-studio.vercel.app/',
+    tags: ['Next.js', 'Tailwind 4', 'WhatsApp API', 'Vercel'],
+    problem:
+      'Negócios locais de treino personalizado geralmente não possuem presença digital estruturada, dificultando captação de clientes e agendamentos diretos.',
+    decisions: [
+      'Uso de Next.js App Router para garantir performance, SEO e estrutura escalável de páginas.',
+      'Design focado em conversão com CTAs diretos para WhatsApp em pontos estratégicos da jornada do usuário.',
+      'UI responsiva com Tailwind 4 priorizando mobile-first, já que a maior parte do tráfego vem de dispositivos móveis.',
+    ],
+  },
+  {
+    id: 'mercadomais',
+    title: 'Mercado +Mais',
+    description:
+      'Plataforma digital para rede de mercados locais com foco em descoberta de unidades e contato rápido via WhatsApp.',
+    category: 'E-commerce / Local Commerce',
+    image: '/projects/mercadomais.png',
+    link: 'https://mercadomais.vercel.app/',
+    tags: ['Next.js', 'Tailwind 4', 'WhatsApp', 'Leaflet', 'Vercel'],
+    problem:
+      'Pequenos mercados locais precisam de uma presença digital simples, rápida e acessível para facilitar o contato com clientes e direcionar para unidades físicas sem fricção.',
+    decisions: [
+      'Arquitetura baseada em Next.js App Router para rotas rápidas, SEO e escalabilidade de páginas de categorias e ofertas.',
+      'Integração com WhatsApp dinâmica por unidade para facilitar conversão direta sem necessidade de cadastro.',
+      'Uso de Leaflet para exibição de mapa interativo das unidades, melhorando descoberta geográfica.',
+      'UI otimizada para mobile-first com foco em navegação rápida e baixa fricção do usuário até o contato.',
+    ],
+  },
+  {
     id: 'escala-de-musicos',
     title: 'Escala Music',
     description:
