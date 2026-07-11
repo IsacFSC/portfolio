@@ -60,7 +60,7 @@ export const projects: Project[] = [
       'Presença digital profissional e otimizada para captação de pacientes.',
     category: 'Institucional',
     image: '/projects/nutri.png',
-    link: 'https://my-nutri-nine.vercel.app/',
+    link: 'https://nutricionistaevellynlopes.vercel.app/',
     tags: ['Next.js', 'Vercel', 'SEO'],
     problem:
       'Transformar um site institucional em uma vitrine de autoridade, aumentando a confiança e geração de leads para serviços de nutrição.',
